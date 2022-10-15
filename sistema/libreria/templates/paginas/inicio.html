@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenido %} 
+
+<div class="row align-items-md-stretch">
+    <div class="col-md-6">
+        <div
+            class="h-100 p-5 text-white bg-primary border rounded-3">
+
+            <form method="get">
+                <div class="mb-3">
+                <label for="" class="form-label">Ingrese parte del nombre de una película, actor, actriz o director</label>
+                <input type="text" value="{{ request.GET.buscar }}"
+                    class="form-control" name="buscar" aria-describedby="helpId" placeholder="">
+                </div>
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </form>    
+
+        </div>
+    </div>
+
+    <br>
+
+    {% if peliculas %}
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Películas</h4>
+                
+                <div class="table-responsive">
+                    <table class="table table-primary">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre (Año, Director)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+        
+                            {% for pelicula in peliculas %}
+                            <tr class="">
+                                <td><a href="{% url 'resenia_Pelicula' pelicula.id %}">
+                                    {{ pelicula.nombre }} ({{ pelicula.anio }}, 
+                                    {{ pelicula.director }})</a></td>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+            <div class="card-footer text-muted">
+                
+            </div>
+        </div> 
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

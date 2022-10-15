@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %} Películas {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">{{ peliculas.nombre.upper }}</h4>
+        
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">{{ peliculas.anio }}, {{ peliculas.director}}</th>
+                    </tr>
+                    <tr>
+                        <img src="{{MEDIA_URL}}/{{peliculas.imagen}}" width="200" srcset="">
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="">
+                        <td>
+                            {{ peliculas.resenia }}</td>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div> 
+
+{% endblock %}
