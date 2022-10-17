@@ -4,9 +4,19 @@ from django.db import models
 class Pelicula(models.Model):
     id_pelicula = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
+    nombre_ingles = models.CharField(max_length=100, null=True)
+    nombre_alternativo = models.CharField(max_length=100, null=True)
     anio = models.IntegerField(verbose_name="Año")
-    imagen = models.ImageField(upload_to='imagenes/', verbose_name="Imagen", null=True)
+    imagen = models.CharField(max_length=50, verbose_name="Imagen", null=True)
     director = models.CharField(max_length=100, default="")
+    actor_1 = models.CharField(max_length=100, default="", null=True)
+    actor_2 = models.CharField(max_length=100, default="", null=True)
+    actor_3 = models.CharField(max_length=100, default="", null=True)
+    actor_4 = models.CharField(max_length=100, default="", null=True)
+    actor_5 = models.CharField(max_length=100, default="", null=True)
+    actor_6 = models.CharField(max_length=100, default="", null=True)
+    pais = models.CharField(max_length=40, default="", null=True)
+    imdb = models.CharField(max_length=100, default="", null=True)
     resenia = models.TextField(verbose_name="Reseña", null=True)
 
     def __str__(self):
@@ -17,13 +27,7 @@ class Pelicula(models.Model):
         self.imagen.storage.delete(self.imagen.name)
         super().delete()
 
-class Actor(models.Model):
-    id_actor = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100)
 
-class PeliculaXActor(models.Model):
-    id_pelicula = models.AutoField(primary_key=True)
-    id_actor = models.CharField(max_length=100)
     
 
 
