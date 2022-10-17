@@ -40,7 +40,7 @@
         
                             {% for pelicula in peliculas %}
                             <tr class="">
-                                <td><a href="{% url 'resenia_Pelicula' pelicula.id %}">
+                                <td><a href="{% url 'resenia_Pelicula' pelicula.id_pelicula %}">
                                     {{ pelicula.nombre }} ({{ pelicula.anio }}, 
                                     {{ pelicula.director }})</a></td>
                                 </td>

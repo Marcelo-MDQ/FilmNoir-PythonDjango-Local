@@ -26,21 +26,14 @@
 
                     {% for pelicula in peliculas %}
                     <tr class="">
-                        <td scope="row">{{ pelicula.id }}</td>
+                        <td scope="row">{{ pelicula.id_pelicula }}</td>
                         <td>{{ pelicula.nombre }}</td>
                         <td>{{ pelicula.anio }}</td>
-                        <td><img src="{{ pelicula.imagen }}" height="100" />
-                            
-                            
-                        </td>
-                        <td><a name="" id="" class="btn btn-info" href="{% url 'editar' pelicula.id %}" role="button">Editar</a><td>
-                            
-                        {% comment  %}
-                        saco el botón de Borrar por las dudas
-                        | <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' pelicula.id %}" role="button">Borrar</a>
-                        {% endcomment %}
-                           
-                            
+                        <td><img src="{{ pelicula.imagen }}" height="100" /></td>
+                        <td><a name="" id="" class="btn btn-info" href="{% url 'editar' pelicula.id_pelicula %}" role="button">Editar</a>
+                            | <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' pelicula.id_pelicula %}" role="button">Borrar</a>
+                        <td>    
+                    </tr>        
                     {% endfor %}
                 </tbody>
             </table>

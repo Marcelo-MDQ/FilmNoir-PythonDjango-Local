@@ -28,8 +28,8 @@ def crear(request):
         return redirect('peliculas')
     return render(request, 'peliculas/crear.html', {'formulario': formulario})
 
-def editar(request, id):
-    pelicula = Pelicula.objects.get(id=id)
+def editar(request, id_pelicula):
+    pelicula = Pelicula.objects.get(id_pelicula=id_pelicula)
     formulario = PeliculaForm(request.POST or None, request.FILES or None, instance=pelicula)
     if formulario.is_valid() and request.POST:
         formulario.save()
@@ -40,11 +40,11 @@ def buscar(request, aBuscar):
     peliculas = Pelicula.objects.filter(nombre__icontains=aBuscar).all().order_by('nombre','anio')
     return render(request, 'peliculas/mostrar.html', {'peliculas': peliculas})
 
-def eliminar(request, id):
-    pelicula = Pelicula.objects.get(id=id)
+def eliminar(request, id_pelicula):
+    pelicula = Pelicula.objects.get(id_pelicula=id_pelicula)
     pelicula.delete()
     return redirect('peliculas')
 
-def reseniaPelicula(request, id):
-    peliculas = Pelicula.objects.get(id=id)
+def reseniaPelicula(request, id_pelicula):
+    peliculas = Pelicula.objects.get(id_pelicula=id_pelicula)
     return render(request, 'peliculas/reseniaPelicula.html', {'peliculas': peliculas})

@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Pelicula(models.Model):
-    id = models.AutoField(primary_key=True)
+    id_pelicula = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     anio = models.IntegerField(verbose_name="Año")
     imagen = models.ImageField(upload_to='imagenes/', verbose_name="Imagen", null=True)
@@ -16,5 +16,14 @@ class Pelicula(models.Model):
     def delete(self, using=True, keep_parents=False):
         self.imagen.storage.delete(self.imagen.name)
         super().delete()
+
+class Actor(models.Model):
+    id_actor = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100)
+
+class PeliculaXActor(models.Model):
+    id_pelicula = models.AutoField(primary_key=True)
+    id_actor = models.CharField(max_length=100)
     
+
 
